@@ -1,0 +1,17 @@
+@import './CssVariables.css';
+
+select {
+    border-radius: 4px;
+    height: 28px;
+    color: var(--gray);
+    font-weight: 700;
+    outline: 0;
+    border-color: var(--lighterGray);
+}
+
+form::before {
+    content: 'Sort by';
+    font-size: 14px;
+    margin-right: 5px;
+    color: var(--lighterGray);
+}

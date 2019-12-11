@@ -1,0 +1,10 @@
+.topSide {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.topSide h2 {
+    flex: 1;
+    font-size: 28px;
+}
