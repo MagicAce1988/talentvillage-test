@@ -60,6 +60,9 @@ class StarredInfluencerList extends Component {
         );
         break;
       default:
+        userList.sort((a, b) =>
+          a.influencer_full_name.localeCompare(b.influencer_full_name)
+        );
     }
 
     return (
