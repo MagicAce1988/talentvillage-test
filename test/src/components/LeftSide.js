@@ -6,21 +6,19 @@ class LeftSide extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
-    let {users} = this.props;
-    let {moveUser} = this.props;
+    let { users } = this.props;
+    let { moveUser } = this.props;
     return (
-      
       <div className="leftSide">
-          <h2>
-            <strong>Suggested Influencers</strong>
-          </h2>
-            <SuggestedInfluencerList users={users} moveUser={moveUser}/>
-        </div>
+        <h2>
+          <strong>Suggested Influencers</strong>
+        </h2>
+        <SuggestedInfluencerList users={users} moveUser={moveUser} />
+      </div>
     );
   }
 }
