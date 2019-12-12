@@ -1,0 +1,7 @@
+@import './CssVariables.css';
+
+.leftSide h2 {
+    font-size: 28px;
+    padding-bottom: 25px;
+
+}

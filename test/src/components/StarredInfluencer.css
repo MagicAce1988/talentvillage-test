@@ -47,6 +47,7 @@
 .smallText {
     color: var(--gray);
     font-size: 14px;
+    font-weight: 500;
 }
 
 .Percent::after {
@@ -71,6 +72,10 @@
 .content {
     display: flex;
     margin-bottom: 10px;
+}
+
+.Engagement {
+    padding-left: 10px;
 }
 
 .fa-times {

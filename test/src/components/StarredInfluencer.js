@@ -9,15 +9,8 @@ class StarredInfluencer extends Component {
     super(props);
 
     this.state = {
-      active: true
     };
   }
-
-  renderState = () => {
-    this.setState({
-      active: false
-    });
-  };
 
   render(
     {
@@ -31,7 +24,7 @@ class StarredInfluencer extends Component {
       id
     } = this.props
   ) {
-    return this.state.active ? (
+    return(
       <div className="content">
         <div className="image">
           <img src={picture} alt="starred influencer" />
@@ -68,7 +61,7 @@ class StarredInfluencer extends Component {
           onClick={() => removeUser(id)}
         ></i>
       </div>
-    ) : null;
+    )
   }
 }
 

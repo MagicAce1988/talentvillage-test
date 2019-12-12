@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import StarredInfluencer from "./StarredInfluencer";
 
-let StarredUsers = require("../data/starred_influencers.json");
-
 class StarredInfluencerList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      listOfInfluencers: StarredUsers.data
+      listOfInfluencers: []
     };
+  }
+
+  componentDidMount() {
+    let {users} = this.props;
+    this.setState({listOfInfluencers: users});
   }
 
   removeUser = id => {

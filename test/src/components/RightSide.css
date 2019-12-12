@@ -1,3 +1,5 @@
+@import './CssVariables.css';
+
 .topSide {
     display: flex;
     align-items: center;
@@ -7,4 +9,12 @@
 .topSide h2 {
     flex: 1;
     font-size: 28px;
+}
+
+.rightSide {
+    padding-left: 15px;
+}
+
+.bottomSide {
+    margin-top: 10px;
 }

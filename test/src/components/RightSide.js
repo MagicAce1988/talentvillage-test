@@ -23,14 +23,17 @@ class RightSide extends Component {
 
 
     render() {
+      let {users} = this.props;
         return (
           <div className='rightSide'>
             <div className='topSide'>
                 <h2><strong>Starred Influencers</strong></h2>
               <Sorter handler={this.sortMethod} />
             </div>
+            <div className='bottomSide'>
 
-            <StarredInfluencerList sortMethod={this.state.sort} />
+            <StarredInfluencerList sortMethod={this.state.sort}  users={users} />
+            </div>
           </div>
         );
     }
