@@ -28,6 +28,15 @@ componentDidMount(){
       rightUsers
     })
   }
+
+  removeUser = (id) => {
+    let {rightUsers} = this.state;
+    let temporaryUsers = rightUsers.filter(user => user.influencer_id !== id);
+    rightUsers.splice(0, rightUsers.length, ...temporaryUsers)
+    this.setState({
+      rightUsers: rightUsers
+    });
+  };
   
   
   
@@ -37,7 +46,7 @@ componentDidMount(){
       <div className="MyApp">
         <div className="Content">
           <div className='leftSideMain'><LeftSide users={this.state.leftUsers} moveUser={this.moveUser}/></div>
-          <div className='rightSideMain'><RightSide users={this.state.rightUsers}/></div>
+          <div className='rightSideMain'><RightSide users={this.state.rightUsers} removeUser={this.removeUser}/></div>
         </div>
       </div>
     );

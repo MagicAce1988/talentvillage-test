@@ -14,18 +14,13 @@ class StarredInfluencerList extends Component {
     let {users} = this.props;
     this.setState({listOfInfluencers: users});
   }
+  
 
-  removeUser = id => {
-    let userList = this.state.listOfInfluencers.filter(
-      (user, i) => user.influencer_id !== id
-    );
-    this.setState({
-      listOfInfluencers: userList
-    });
-  };
 
   render() {
     let { sortMethod } = this.props;
+
+    let { removeUser } = this.props;
 
     let userList = this.state.listOfInfluencers;
 
@@ -78,7 +73,7 @@ class StarredInfluencerList extends Component {
             picture={user.influencer_instagram_profile_image}
             followers={user.statistics.followers}
             engagement={user.statistics.engagement}
-            removeUser={this.removeUser}
+            removeUser={removeUser}
           />
         ))}
       </div>

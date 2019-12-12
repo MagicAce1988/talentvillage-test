@@ -24,6 +24,9 @@ class RightSide extends Component {
 
     render() {
       let {users} = this.props;
+
+      let {removeUser} = this.props;
+
         return (
           <div className='rightSide'>
             <div className='topSide'>
@@ -32,7 +35,7 @@ class RightSide extends Component {
             </div>
             <div className='bottomSide'>
 
-            <StarredInfluencerList sortMethod={this.state.sort}  users={users} />
+            <StarredInfluencerList sortMethod={this.state.sort}  users={users} removeUser={removeUser} />
             </div>
           </div>
         );
