@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./LeftSide.css";
+import "../cssfiles/LeftSide.css";
 import SuggestedInfluencerList from "./SuggestedInfluencerList";
 
 class LeftSide extends Component {

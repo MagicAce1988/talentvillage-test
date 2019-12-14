@@ -1,22 +1,37 @@
 import React, { Component } from "react";
 import "./App.css";
-import LeftSide from "./components/LeftSide";
-import RightSide from "./components/RightSide";
+import LeftSide from "./components/leftside/LeftSide";
+import RightSide from "./components/rightside/RightSide";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      leftUsers: [],
+      rightUsers: []
+    };
   }
 
   componentDidMount() {
-    fetch("https://api.myjson.com/bins/w6vbo")
-      .then(response => response.json())
-      .then(users => this.setState({ leftUsers: users.data }));
-    fetch("https://api.myjson.com/bins/k7uck")
-      .then(response => response.json())
-      .then(users => this.setState({ rightUsers: users.data }));
+    setTimeout(async () => {
+      let [{ data: leftUsers }, { data: rightUsers }] = await Promise.all([
+        fetch("https://api.myjson.com/bins/w6vbo").then(response =>
+          response.json()
+        ),
+        fetch("https://api.myjson.com/bins/k7uck").then(response => response.json())
+      ]);
+      // let {data :leftUsers}=await fetch("https://api.myjson.com/bins/w6vbo")
+      //   .then(response => response.json())
+
+      // let {data: rightUsers} = await fetch("https://api.myjson.com/bins/k7uck")
+      //   .then(response => response.json())
+
+      this.setState({
+        leftUsers,
+        rightUsers
+      });
+    }, 3000);
   }
 
   moveUser = id => {
@@ -38,31 +53,27 @@ class App extends Component {
   };
 
   render() {
-    
-    if (this.state.leftUsers && this.state.rightUsers) {
+    let users = this.state.leftUsers || [];
 
-      let users = this.state.leftUsers;
+    let filteredUsers = users.filter(
+      user => !this.state.rightUsers.includes(user)
+    );
 
-      let filteredUsers = users.filter((user) => !this.state.rightUsers.includes(user));
-
-      return (
-        <div className="MyApp">
-          <div className="Content">
-            <div className="leftSideMain">
-              <LeftSide users={filteredUsers} moveUser={this.moveUser} />
-            </div>
-            <div className="rightSideMain">
-              <RightSide
-                users={this.state.rightUsers}
-                removeUser={this.removeUser}
-              />
-            </div>
+    return (
+      <div className="MyApp">
+        <div className="Content">
+          <div className="leftSideMain">
+            <LeftSide users={filteredUsers} moveUser={this.moveUser} />
+          </div>
+          <div className="rightSideMain">
+            <RightSide
+              users={this.state.rightUsers}
+              removeUser={this.removeUser}
+            />
           </div>
         </div>
-      );
-    } else {
-      return null;
-    }
+      </div>
+    );
   }
 }
 

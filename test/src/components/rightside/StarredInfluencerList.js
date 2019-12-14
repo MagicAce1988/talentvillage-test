@@ -1,28 +1,28 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import StarredInfluencer from "./StarredInfluencer";
+import StarredInfluencerLoading from "./StarredInfluencerLoading";
 
 class StarredInfluencerList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      listOfInfluencers: []
+      checkIfListWasShown: 0
     };
   }
 
-  componentDidMount() {
-    let {users} = this.props;
-    this.setState({listOfInfluencers: users});
+  checkIfListWasShown = () => {
+    this.setState({
+      checkIfListWasShown: 1
+    })
   }
-  
-
 
   render() {
     let { sortMethod } = this.props;
 
     let { removeUser } = this.props;
 
-    let userList = this.state.listOfInfluencers;
+    let userList = this.props.users;
 
     switch (sortMethod) {
       case "FollowersAsc":
@@ -65,7 +65,7 @@ class StarredInfluencerList extends Component {
         );
     }
 
-    return (
+    return (userList.length || this.state.checkIfListWasShown) ? (
       <div className="group">
         {userList.map((user, i) => (
           <StarredInfluencer
@@ -77,10 +77,11 @@ class StarredInfluencerList extends Component {
             followers={user.statistics.followers}
             engagement={user.statistics.engagement}
             removeUser={removeUser}
+            checkIfListWasShown={this.checkIfListWasShown}
           />
         ))}
       </div>
-    );
+    ) : <Fragment><StarredInfluencerLoading /><StarredInfluencerLoading /><StarredInfluencerLoading /><StarredInfluencerLoading /><StarredInfluencerLoading /></Fragment>
   }
 }
 

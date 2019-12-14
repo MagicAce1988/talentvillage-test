@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./SuggestedInfluencer.css";
-import "../../node_modules/font-awesome/css/font-awesome.css";
+import "../cssfiles/SuggestedInfluencer.css";
+import "../../../node_modules/font-awesome/css/font-awesome.css";
 
 class SuggestedInfluencer extends Component {
     constructor(props) {
@@ -9,10 +9,10 @@ class SuggestedInfluencer extends Component {
         this.state = {
         };
     }
-    
 
     render() {
-        let { name, picture, instagram, moveUser, id } = this.props;
+        let { name, picture, instagram, moveUser, checkIfListWasShown, id } = this.props;
+
         return (
             <div className="content">
                 <div className="image">
@@ -35,7 +35,7 @@ class SuggestedInfluencer extends Component {
                 <i
                     className="fa fa-plus"
                     aria-hidden="true"
-                    onClick={()=>moveUser(id)}
+                    onClick={() => { moveUser(id); checkIfListWasShown()}}
                 ></i>
             </div>
         )

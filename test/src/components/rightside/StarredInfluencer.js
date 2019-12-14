@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./StarredInfluencer.css";
-import "../../node_modules/font-awesome/css/font-awesome.css";
+import "../cssfiles/StarredInfluencer.css";
+import "../../../node_modules/font-awesome/css/font-awesome.css";
 
 let grouper = require("number-grouper");
 
@@ -8,8 +8,7 @@ class StarredInfluencer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
   }
 
   render(
@@ -19,12 +18,12 @@ class StarredInfluencer extends Component {
       picture,
       followers,
       engagement,
-      number,
       removeUser,
+      checkIfListWasShown,
       id
     } = this.props
   ) {
-    return(
+    return (
       <div className="content">
         <div className="image">
           <img src={picture} alt="starred influencer" />
@@ -58,10 +57,13 @@ class StarredInfluencer extends Component {
         <i
           className="fa fa-times"
           aria-hidden="true"
-          onClick={() => removeUser(id)}
+          onClick={() => {
+            removeUser(id);
+            checkIfListWasShown();
+          }}
         ></i>
       </div>
-    )
+    );
   }
 }
 

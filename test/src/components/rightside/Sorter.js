@@ -1,5 +1,5 @@
 import React from 'react'
-import './Sorter.css'
+import '../cssfiles/Sorter.css'
 
 function Sorter({handler}) {
     return (

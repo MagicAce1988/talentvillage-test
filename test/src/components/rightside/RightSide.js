@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import StarredInfluencerList from './StarredInfluencerList'
 import Sorter from './Sorter'
-import './RightSide.css'
+import '../cssfiles/RightSide.css'
 
 class RightSide extends Component {
     constructor(props) {
