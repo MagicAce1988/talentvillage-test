@@ -1,7 +1,11 @@
 @import './CssVariables.css';
 
-.leftSide h2 {
+.leftSide  {
     font-size: 28px;
     padding-bottom: 25px;
 
+}
+
+.errorMessage {
+    padding-top: 5px;
 }

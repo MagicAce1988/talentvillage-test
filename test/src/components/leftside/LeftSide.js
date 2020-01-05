@@ -1,26 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import "../cssfiles/LeftSide.css";
 import SuggestedInfluencerList from "./SuggestedInfluencerList";
 
-class LeftSide extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
-  render() {
-    let { users } = this.props;
-    let { moveUser } = this.props;
+function LeftSide () {
+    console.log('rerendering');
     return (
-      <div className="leftSide">
-        <h2>
+      <div>
+        <h2 className="leftSide">
           <strong>Suggested Influencers</strong>
         </h2>
-        <SuggestedInfluencerList users={users} moveUser={moveUser} />
+        <SuggestedInfluencerList />
       </div>
     );
   }
-}
 
 export default LeftSide;

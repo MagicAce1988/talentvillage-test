@@ -1,28 +1,24 @@
-import React, { Component } from "react";
+import React, {useContext} from "react";
 import "../cssfiles/StarredInfluencer.css";
 import "../../../node_modules/font-awesome/css/font-awesome.css";
+import { appContext } from "./../../App";
 
 let grouper = require("number-grouper");
 
-class StarredInfluencer extends Component {
-  constructor(props) {
-    super(props);
+function StarredInfluencer (props) {
+  const context = useContext(appContext);
 
-    this.state = {};
-  }
+  let {removeUser} = context
 
-  render(
-    {
+    let {
       name,
       instagram,
       picture,
       followers,
       engagement,
-      removeUser,
-      checkIfListWasShown,
       id
-    } = this.props
-  ) {
+    } = props
+   
     return (
       <div className="content">
         <div className="image">
@@ -58,13 +54,10 @@ class StarredInfluencer extends Component {
           className="fa fa-times"
           aria-hidden="true"
           onClick={() => {
-            removeUser(id);
-            checkIfListWasShown();
-          }}
+            removeUser(id)}}
         ></i>
       </div>
     );
   }
-}
 
 export default StarredInfluencer;

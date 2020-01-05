@@ -1,44 +1,33 @@
-import React, { Component, Fragment } from "react";
+import React, { useContext, Fragment } from "react";
 import SuggestedInfluencer from "./SuggestedInfluencer";
 import SuggestedInfluencerLoading from "./SuggestedInfluencerLoading";
+import {appContext} from './../../App';
 
-class SuggestedInfluencerList extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-       checkIfListWasShown: 0
+function SuggestedInfluencerList () {
+  const context = useContext(appContext);
+  let { currentState, filteredUsers } = context;
+
+    if (currentState.loading) {
+      return (
+        <Fragment><SuggestedInfluencerLoading /><SuggestedInfluencerLoading /> <SuggestedInfluencerLoading /></Fragment>
+      );
     }
-  }
-  
-  checkIfListWasShown = () => {
-    this.setState({
-      checkIfListWasShown: 1
-    })
-  }
 
-  render() {
-    let userList = this.props.users;
-    let { moveUser } = this.props;
-
-
-    return (userList.length || this.state.checkIfListWasShown) ?
+    return currentState.error !== "Something went wrong..." ? (
       <div className="group">
-        {userList.map((user, i) => (
+        {filteredUsers.map((user, i) => (
           <SuggestedInfluencer
             key={i}
             id={user.influencer_id}
             name={user.influencer_full_name}
             instagram={user.influencer_instagram_username}
             picture={user.influencer_instagram_profile_image}
-            moveUser={moveUser}
-            checkIfListWasShown={this.checkIfListWasShown}
-
           />
         ))}
-      </div> : <Fragment><SuggestedInfluencerLoading /><SuggestedInfluencerLoading /> <SuggestedInfluencerLoading /></Fragment>
-    
-  }
-}
+      </div>
+    ) : (
+      <h2>{currentState.error}</h2>
+    );
+        }
 
 export default SuggestedInfluencerList;

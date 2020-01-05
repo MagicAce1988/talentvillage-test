@@ -1,45 +1,24 @@
-import React, { Component } from 'react'
-import StarredInfluencerList from './StarredInfluencerList'
-import Sorter from './Sorter'
-import '../cssfiles/RightSide.css'
+import React, { useContext } from "react";
+import StarredInfluencerList from "./StarredInfluencerList";
+import Sorter from "./Sorter";
+import "../cssfiles/RightSide.css";
+import { appContext } from "./../../App";
 
-class RightSide extends Component {
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             sort: ''
-        }
-    }
-    
-
-    sortMethod = (method) => {
-        this.setState({
-            sort: method
-        })
-    }
-
-
-
-
-    render() {
-      let {users} = this.props;
-
-      let {removeUser} = this.props;
-
-        return (
-          <div className='rightSide'>
-            <div className='topSide'>
-                <h2><strong>Starred Influencers</strong></h2>
-              <Sorter handler={this.sortMethod} />
-            </div>
-            <div className='bottomSide'>
-
-            <StarredInfluencerList sortMethod={this.state.sort}  users={users} removeUser={removeUser} />
-            </div>
-          </div>
-        );
-    }
+function RightSide() {
+  const context = useContext(appContext);
+  let { sortMethod } = context;
+  return (
+    <div className="rightSide">
+      <div className="topSide">
+        <h2>
+          <strong>Starred Influencers</strong>
+        </h2>
+        <Sorter handler={sortMethod} />
+      </div>
+      <div className="bottomSide">
+        <StarredInfluencerList />
+      </div>
+    </div>
+  );
 }
-
-export default RightSide
+export default RightSide;

@@ -1,45 +1,41 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import "../cssfiles/SuggestedInfluencer.css";
 import "../../../node_modules/font-awesome/css/font-awesome.css";
+import { appContext } from "./../../App";
 
-class SuggestedInfluencer extends Component {
-    constructor(props) {
-        super(props);
+function SuggestedInfluencer(props) {
+  const context = useContext(appContext);
+  let { moveUser } = context;
+  let { name, picture, instagram, id } = props;
 
-        this.state = {
-        };
-    }
+  return (
+    <div className="content">
+      <div className="image">
+        <img src={picture} alt="suggested influencer" />
+      </div>
 
-    render() {
-        let { name, picture, instagram, moveUser, checkIfListWasShown, id } = this.props;
-
-        return (
-            <div className="content">
-                <div className="image">
-                    <img src={picture} alt="suggested influencer" />
-                </div>
-
-                <div className="SuggestedInfluencer">
-                    <div className="Text Name">
-                        <p>
-                            <strong>{name}</strong>
-                        </p>
-                        <div className="smallText Instagram">
-                            <div>
-                                <i className="fa fa-instagram" aria-hidden="true"></i>
-                            </div>
-                            <div>{instagram}</div>
-                        </div>
-                    </div>
-                </div>
-                <i
-                    className="fa fa-plus"
-                    aria-hidden="true"
-                    onClick={() => { moveUser(id); checkIfListWasShown()}}
-                ></i>
+      <div className="SuggestedInfluencer">
+        <div className="Text Name">
+          <p>
+            <strong>{name}</strong>
+          </p>
+          <div className="smallText Instagram">
+            <div>
+              <i className="fa fa-instagram" aria-hidden="true"></i>
             </div>
-        )
-    }
+            <div>{instagram}</div>
+          </div>
+        </div>
+      </div>
+      <i
+        className="fa fa-plus"
+        aria-hidden="true"
+        onClick={() => {
+          moveUser(id);
+        }}
+      ></i>
+    </div>
+  );
 }
 
 export default SuggestedInfluencer;
