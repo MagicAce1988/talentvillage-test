@@ -115,9 +115,7 @@ function App() {
     });
   };
 
-  let users = currentState.leftUsers || [];
-
-  let filteredUsers = users.filter(
+  let filteredUsers = currentState.leftUsers.filter(
     user => !currentState.rightUsers.includes(user)
   );
 

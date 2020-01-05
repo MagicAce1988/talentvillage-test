@@ -3,7 +3,6 @@ import "../cssfiles/LeftSide.css";
 import SuggestedInfluencerList from "./SuggestedInfluencerList";
 
 function LeftSide () {
-    console.log('rerendering');
     return (
       <div>
         <h2 className="leftSide">
