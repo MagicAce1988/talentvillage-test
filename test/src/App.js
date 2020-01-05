@@ -21,14 +21,14 @@ const reducer = (state, action) => {
         ...state,
         loading: false,
         rightUsers: action.payload,
-        error: "noerror"
+        error: ""
       };
     case "FETCH_STARRED_SUCCESS":
       return {
         ...state,
         loading: false,
         leftUsers: action.payload,
-        error: " "
+        error: ""
       };
     case "FETCH_SUGGESTED_ERROR":
       return {
@@ -123,12 +123,19 @@ function App() {
 
   return (
     <appContext.Provider
-      value={{ currentState, dispatch, filteredUsers, moveUser, removeUser,sortMethod }}
+      value={{
+        currentState,
+        dispatch,
+        filteredUsers,
+        moveUser,
+        removeUser,
+        sortMethod
+      }}
     >
       <div className="MyApp">
         <div className="Content">
           <div className="leftSideMain">
-            <LeftSide/>
+            <LeftSide />
           </div>
           <div className="rightSideMain">
             <RightSide />
