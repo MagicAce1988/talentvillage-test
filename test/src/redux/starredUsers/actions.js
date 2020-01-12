@@ -25,6 +25,7 @@ const fetchStarredUsersFailure = () => {
   };
 };
 
+
 export const fetchStarredUsers = () => {
   return function(dispatch) {
     dispatch(fetchStarredUsersRequest());
