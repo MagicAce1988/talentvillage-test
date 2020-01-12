@@ -1,11 +1,21 @@
 import React from 'react'
 import '../cssfiles/Sorter.css'
+import {connect} from 'react-redux';
+import {setSortMethod} from '../../redux/setSortMethod/actions';
 
-function Sorter({handler}) {
+const mapDispatchToProps = dispatch => {
+      return {
+        setSortMethod: event => dispatch(setSortMethod(event.target.value))
+      }
+  }
+
+function Sorter(props) {
+  const {setSortMethod} = props
+  
     return (
       <div>
         <form>
-          <select onChange={(event) => handler(event.target.value)}>
+          <select onChange={setSortMethod}>
             <option value="AlphabetAsc">Alphabetically</option>
             <option value="AlphabetDesc">Alphabetically (Reverse Order)</option>
             <option value="EngagementAsc">Engagement (Low - High)</option>
@@ -19,4 +29,4 @@ function Sorter({handler}) {
     );
 }
 
-export default Sorter
+export default connect(null,mapDispatchToProps)(Sorter)

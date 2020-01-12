@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "../cssfiles/SuggestedInfluencerLoading.module.css";
 
-function SuggestedInfluencerLoading() {
-  return (
-    <div className="content">
+function SuggestedInfluencerLoading({number}) {
+
+  let Placeholder = () => (<div className="content">
       <div className={styles.image}></div>
 
       <div className={styles.SuggestedInfluencer}>
@@ -14,8 +14,22 @@ function SuggestedInfluencerLoading() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    </div>)
+
+
+    let loadingPlaceHolders = [];
+
+    for (var i = 0; i < number; i++) {
+      loadingPlaceHolders.push(i);
+    }
+
+    return (
+      <div className="placeholder">
+        {loadingPlaceHolders.map(i => (
+          <Placeholder key={i}></Placeholder>
+        ))}
+      </div>
+    );
+        }
 
 export default SuggestedInfluencerLoading;

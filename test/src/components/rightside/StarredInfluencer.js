@@ -1,14 +1,18 @@
-import React, {useContext} from "react";
+import React from "react";
+import {connect} from 'react-redux';
 import "../cssfiles/StarredInfluencer.css";
 import "../../../node_modules/font-awesome/css/font-awesome.css";
-import { appContext } from "./../../App";
+import {removeStarredById} from '../../redux';
 
 let grouper = require("number-grouper");
 
-function StarredInfluencer (props) {
-  const context = useContext(appContext);
+const mapDispatchToProps = dispatch => {
+    return {
+        removeUser: (id) => dispatch(removeStarredById(id))
+    }
+}
 
-  let {removeUser} = context
+function StarredInfluencer (props) {
 
     let {
       name,
@@ -53,11 +57,10 @@ function StarredInfluencer (props) {
         <i
           className="fa fa-times"
           aria-hidden="true"
-          onClick={() => {
-            removeUser(id)}}
+          onClick={()=> props.removeUser(id)}
         ></i>
       </div>
     );
   }
 
-export default StarredInfluencer;
+export default connect(null, mapDispatchToProps)(StarredInfluencer);

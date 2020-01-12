@@ -1,0 +1,1 @@
+export const CHANGE_SORT_METHOD = "CHANGE_SORT_METHOD";
